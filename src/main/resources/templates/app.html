@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vicious Valet</title>
+		<link rel="stylesheet" href="/css/app.css">
+	</head>
+	<body>
+		<div id="hero">Lot #236</div>
+		<h1>1300 North Washington Street, Carmel IN</h1>
+		<h2>Enter Vehicle Information</h2>
+		<form action="/" method="post"> <!-- posting data to server (sent with request) and then show what it gives back-->
+			<div class="userInput">
+				<label>License Plate</label>
+				<input type="text" name="license" required>
+			</div>
+			<div class="userInput">
+				<label>State</label>
+				<input type="text" name="state" required>
+			</div>
+			<div class="userInput">
+				<label>Color</label>
+				<input type="text" name="color" required>
+			</div>
+			<div class="userInput">
+				<label>Make</label>
+				<input type="text" name="make" required>
+			</div>		
+			<div class="userInput">
+				<label>Model</label>
+				<input type="text" name="model" required>
+			</div>			
+			<button id="addCarButton">Add Car</button>
+		</form>
+		<p>The lot is full: {{ lot.isLotFull }}</p>
+		<p>Total Number of Cars in Lot: <span id="numberOfCars">{{ lot.carListSize }}</span></p>
+		<table>
+			<thead>
+				<tr>
+					<th>License</th>
+					<th>State</th>
+					<th>Make</th>
+					<th>Model</th>
+					<th>Color</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#lot.carList}}
+				<tr>
+					<td>{{ license }}</td>
+					<td>{{ state }}</td>
+					<td>{{ make }}</td>
+					<td>{{ model }}</td>
+					<td>{{ color }}</td>
+					<td>
+						<form action="/remove" method="post"> <!-- posting data to server (sent with request) and then show what it gives back-->
+							<input type="hidden" name="carIndex" value="{{-index}}"> <!-- this is how we can provide extra info in the post to the server -->
+							<button>Remove from lot</button>
+						</form>
+					</td>
+				</tr>
+				{{/lot.carList}}
+			</tbody>
+		</table>
+		
+	<!-- This is comment syntax in html -->
+	</body>
+</html>
