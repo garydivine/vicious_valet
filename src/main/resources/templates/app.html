@@ -29,8 +29,9 @@
 			<div class="userInput">
 				<label>Model</label>
 				<input type="text" name="model" required>
-			</div>			
-			<button id="addCarButton">Add Car</button>
+			</div>	
+			<br>		
+			<button class="carButton">Add Car</button>
 		</form>
 		<p>The lot is full: {{ lot.isLotFull }}</p>
 		<p>Total Number of Cars in Lot: <span id="numberOfCars">{{ lot.carListSize }}</span></p>
@@ -56,7 +57,7 @@
 					<td>
 						<form action="/remove" method="post"> <!-- posting data to server (sent with request) and then show what it gives back-->
 							<input type="hidden" name="carIndex" value="{{-index}}"> <!-- this is how we can provide extra info in the post to the server -->
-							<button>Remove from lot</button>
+							<button class="carButton">Remove from lot</button>
 						</form>
 					</td>
 				</tr>
